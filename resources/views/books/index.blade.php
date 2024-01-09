@@ -5,10 +5,12 @@
 @stop
 
 @section('content')
-    <h2 class="text-2xl font-bold mb-4">Books</h2>
-    @include('books._index', [
-        'books' => \App\Models\Book::orderBy('created_at', 'DESC')->limit(9)->get(),
-    ])
+    @php
+        $books = \App\Models\Book::orderBy('created_at', 'DESC')->paginate(9);
+    @endphp
 
-    <div>Pagination</div>
+    <h2 class="text-2xl font-bold mb-4">Books</h2>
+    @include('books._index', ['books' => $books])
+
+    <div>{{ $books->links() }}</div>
 @stop
