@@ -21,4 +21,8 @@ class Book extends Model
     {
         return $this->belongsToMany(Tag::class, 'books_has_tags');
     }
+    public function notations()
+    {
+        return $this->hasMany(Notation::class);
+    }
 }

@@ -21,6 +21,14 @@ Route::get('/books', function () {
     return view('books.index');
 })->name('books.index');
 
+Route::get('/books/{book}/{slug}', function (\App\Models\Book $book) {
+    return view('books.show', compact('book'));
+})->name('books.show');
+
 Route::get('/authors', function () {
     return view('authors.index');
 })->name('authors.index');
+
+Route::get('/authors/{author}/{slug}', function (\App\Models\Author $author) {
+    return view('authors.show', compact('author'));
+})->name('authors.show');

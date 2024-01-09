@@ -7,5 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Notation extends Model
 {
+    protected $table = "users_notations";
     use HasFactory;
 }

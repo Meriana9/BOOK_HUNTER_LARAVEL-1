@@ -19,14 +19,17 @@
                     <span class="text-yellow-500 mr-1">
                         <i class="fas fa-star"></i>
                     </span>
-                    <span>8.9</span>
+                    <span>{{ number_format($book->notations->avg('note'), 1) }}</span>
                 </div>
 
                 <p class="text-gray-400">
                     {{ $book->resume }}
                 </p>
 
-                <a href="book.html"
+                <a href="{{ route('books.show', [
+                    'book' => $book->id,
+                    'slug' => \Illuminate\Support\Str::slug($book->title, '-'),
+                ]) }}"
                     class="inline-block mt-4 bg-red-500 hover:bg-red-800 rounded-full px-4 py-2 text-white">
                     More details
                 </a>
