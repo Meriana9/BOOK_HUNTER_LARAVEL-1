@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'pseudo',
+        'name',
         'email',
         'password',
     ];
@@ -41,4 +41,29 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function contacts()
+    {
+        return $this->hasMany(Contact::class);
+    }
+
+    public function groups()
+    {
+        return $this->hasMany(Group::class);
+    }
+
+    public function categories()
+    {
+        return $this->hasMany(Category::class);
+    }
+
+    public function tags()
+    {
+        return $this->hasMany(Tag::class);
+    }
+
+    public function favorites()
+    {
+        return $this->belongsToMany(Contact::class, 'favorites', 'user_id', 'contact_id');
+    }
 }

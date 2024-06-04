@@ -8,8 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Tag extends Model
 {
     use HasFactory;
-    public function books()
+
+    protected $fillable = [
+        'name',
+    ];
+
+    public function contacts()
     {
-        return $this->belongsToMany(Book::class, 'books_has_tags');
+        return $this->belongsToMany(Contact::class, 'tag_contact');
     }
 }

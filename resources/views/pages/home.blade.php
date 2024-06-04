@@ -1,10 +1,10 @@
+<!-- resources/views/pages/home.blade.php -->
 @extends('templates.index')
 
 @section('title')
-    Popular Books and Authors
+    Home
 @stop
 
 @section('content')
-    @include('books._populars')
-    @include('authors._populars')
+    @include('dashboard')
 @stop
